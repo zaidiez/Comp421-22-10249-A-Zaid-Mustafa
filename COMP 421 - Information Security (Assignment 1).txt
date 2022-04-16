@@ -1,0 +1,10 @@
+1. The first step I took was to verify the IP address of metasploitable 2 with the command "ifconfig," and then I used the command "ping" to see if the IP address was still active on Kali Linux. Then, using google chrome, connect to the IP address, which opens the portal for various applications, such as TWiki, phpMyAdmin, Mutillidae, and so on.
+2. Continue down the path on the Mutillidae portal, starting with the side pane "OWASP Top 10">" A1 - Injection">"SQLi Extract Data"> "User Info." The Login Portal will now be accessible.
+3. Now, launch Burp Suite and navigate to the proxy tab. Check to see if an IP address is listed in the options, then hit the click button on intercept to ensure that it is enabled.
+4. Open Google Chrome's network settings and modify settings to "Manual proxy setup" with the IP address and port number from the Burp Suite already entered.
+5. Obtain access to the login portal and log in using a randomized username and password to see if Burp Suite intercepts and captures requests. If the data is captured, save the item on your desktop with the name "Fetched Data (SQL Injection Attack).txt" to keep track of it for future reference. Close the Burp Suite and turn off the interceptor if it is running.
+6. Because you have successfully captured the request utilizing Burp Suite IP, you should now restore the default network settings for Google Chrome.
+7. Open the terminal and type "sqlmap" into the search box. Pressing enter will launch the application that would be used now.
+8. Enter the command "sqlmap -r /root/Desktop/Fetched Data (SQL Injection Attack).txt —DBS" on the command line. It will analyze the request for vulnerabilities and report them to the user.
+9. When the scan is complete, using the command "sqlmap -r /root/Desktop -D MySQL —tables" when the scan is full will reveal all of the tables in the database where "MySQL" is the name of the database being scanned.
+10. By making use of the function "sqlmap -r /root/Desktop/extract.txt -D MySQL -T accounts —dump," we can extract and display all of the information in that table, which we can then utilize to obtain access to it.
